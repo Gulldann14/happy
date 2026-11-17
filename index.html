@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днем Рождения, Дядя!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Фоновые звезды -->
+    <canvas id="stars-canvas"></canvas>
+    <!-- Салют -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- ЭКРАН 1: Интро -->
+    <section id="intro-screen" class="screen active">
+        <div class="glass-container">
+            <h1 class="pre-title">Для Саши</h1>
+            <p class="pre-subtitle">Здесь спрятано кое-что особенное. Готов?</p>
+            <button id="open-btn" class="primary-btn">Открыть поздравление</button>
+        </div>
+    </section>
+
+    <!-- ЭКРАН 2: Основное поздравление -->
+    <section id="main-screen" class="screen">
+        <div class="glass-container main-content">
+            <h1 class="glow-text">С Днем Рождения!</h1>
+            
+            <div class="typewriter-container">
+                <p id="typewriter" class="typewriter-text"></p>
+                <span class="cursor">|</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="wishes">
+                Желаю тебе крепкого здоровья, безграничного счастья и чтобы каждый день приносил только крутые новости. 
+                Пусть всё задуманное обязательно сбудется! С уважением и любовью твой любимый племяник програмист.
+            </p>
+        </div>
+    </section>
+
+    <script src="js.js"></script>
+</body>
+</html>

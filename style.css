@@ -1,0 +1,200 @@
+:root {
+    --bg-color: #050810;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --gold: #fbbf24;
+    --gold-dark: #f59e0b;
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Canvas элементы */
+#stars-canvas, #fireworks-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#fireworks-canvas {
+    z-index: 2;
+}
+
+/* Управление экранами */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s;
+    padding: 20px;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Стеклянная карточка (Glassmorphism) */
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.screen.active .glass-container {
+    transform: translateY(0);
+}
+
+/* Экран 1: Интро */
+.pre-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.pre-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* Кнопка */
+.primary-btn {
+    background: transparent;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    outline: none;
+}
+
+.primary-btn:hover {
+    background: var(--gold);
+    color: var(--bg-color);
+    box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Экран 2: Поздравление */
+.main-content {
+    max-width: 800px;
+}
+
+.glow-text {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #fff, var(--gold), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
+}
+
+.typewriter-container {
+    min-height: 60px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.typewriter-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--text-main);
+}
+
+.cursor {
+    font-weight: 300;
+    color: var(--gold);
+    animation: blink 1s step-end infinite;
+}
+
+.divider {
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 2rem auto;
+}
+
+.wishes {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-weight: 300;
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+    animation-delay: 1s;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Адаптив под мобилки */
+@media (max-width: 600px) {
+    .glass-container {
+        padding: 2rem 1.5rem;
+    }
+    .pre-subtitle {
+        margin-bottom: 2rem;
+    }
+}
